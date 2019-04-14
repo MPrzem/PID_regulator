@@ -41,7 +41,7 @@
 #define DS18X20_CONVERT_T	0x44
 #define DS18X20_READ		0xBE
 #define DS18X20_WRITE		0x4E
-#define DS18X20_EE_WRITE	0x48
+#define DS18X20_EE_WRITE	0x48 /// Trzeba uzyc tego
 #define DS18X20_EE_RECALL	0xB8
 #define DS18X20_READ_POWER_SUPPLY 0xB4
 
@@ -59,9 +59,9 @@
 
 // conversion times in ms
 #define DS18B20_TCONV_12BIT      750
-#define DS18B20_TCONV_11BIT      DS18B20_TCONV_12_BIT/2
-#define DS18B20_TCONV_10BIT      DS18B20_TCONV_12_BIT/4
-#define DS18B20_TCONV_9BIT       DS18B20_TCONV_12_BIT/8
+#define DS18B20_TCONV_11BIT      DS18B20_TCONV_12BIT/2
+#define DS18B20_TCONV_10BIT      DS18B20_TCONV_12BIT/4
+#define DS18B20_TCONV_9BIT       DS18B20_TCONV_12BIT/8
 #define DS18S20_TCONV            DS18B20_TCONV_12_BIT
 
 // constant to convert the fraction bits to cel*(10^-4)
@@ -73,6 +73,7 @@ extern uint8_t gSensorIDs[MAXSENSORS][OW_ROMCODE_SIZE];
 
 
 /* for description of functions see ds18x20.c */
+void ds18b20_set_resolution(unsigned char res);
 
 uint8_t search_sensors(void);
 

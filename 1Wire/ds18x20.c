@@ -209,10 +209,9 @@ void ds18b20_set_resolution(unsigned char res)
 {
     unsigned char conf = 0b00011111;
 
-    conf |= res << 5;
-
+    //conf |= res << 5;
     ow_reset();
-
+    ow_byte_wr(0xcc);
     ow_byte_wr(0x4E); // konfiguracja DS18B20
     ow_byte_wr(0x00); // T_l
     ow_byte_wr(0x00); // T_h

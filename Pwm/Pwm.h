@@ -6,6 +6,7 @@
 #include <avr/pgmspace.h>
 #include <avr/eeprom.h>
 #include <util/delay.h>
+#include "../1wire/ds18x20.h"
 
 #define PWM_F PB3 //Pin sprzetowego kanalu PWM Timer2
 #define PWM_H PB1// Pin sprzetowego kana³u PWM (czêœc A timera 1)
