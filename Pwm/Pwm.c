@@ -11,7 +11,7 @@ const char temp_zad_text [] PROGMEM = "Temp zadan. :";
 
 const char error[] PROGMEM="Awaria czujnika";
 const char fanpowertext [] PROGMEM ="Moc wiatraka: " ;
-
+struct PID1 Pid ={25,10,3,0.185,0,0,0,0,40};
 /// ow-BYTE-WR = OW-WRITE
 
 void Pwm_init(void){
@@ -48,22 +48,38 @@ void Display(){
 void ask_sensors(void){
 	DS18X20_start_meas(DS18X20_POWER_PARASITE,NULL);
 _delay_ms(DS18B20_TCONV_10BIT);
-if(!(DS18X20_OK==DS18X20_read_meas(gSensorIDs[0],&sign,&temp1,&temp1_fraction)))
+if(!(DS18X20_OK==DS18X20_read_meas(gSensorIDs[0],&sign,&temp1,&temp1_fraction))){
 	LCD_WriteText_P(error);
+	_delay_ms(1000);
+	return;
+}
+Pid.deviation_prev=Pid.deviation;
+Pid.deviation=temp1+temp1_fraction/10-Pid.temp_expected;
+if(Pid.deviation<0.3&&Pid.deviation>-0.3)//Tolerancja +-0.3C
+	Pid.deviation=0;
 }
 //calka jedenej chwili czasowej. Podajemy wartosc poczatkowa i koncowa chwili
 //Ponizsze funkcje nie zmieniaja uchybu obecnego na poprzedni, ja bym tutaj uzyl static
-int integral(){
+float integral(){
 	 Pid.integral_memory+=(Pid.deviation + Pid.deviation_prev)/2*Pid.dt;
+	 if(Pid.integral_memory>100)
+		 Pid.integral_memory=100;
+	 if(Pid.integral_memory<-100)
+		 Pid.integral_memory=-100;
 	 return Pid.integral_memory;
+
 }
 
-int deriverate(){
-	 return  ((Pid.deviation - Pid.deviation_prev)/Pid.dt);
+float deriverate(){
+	return  ((Pid.deviation - Pid.deviation_prev)/Pid.dt);
 }
 
-int Pid_control(uint8_t current_temp){
-	 Pid.out = Pid.Kp*(Pid.deviation + (1/Pid.Ti)*integral() + Pid.Td*deriverate());
+int Pid_control(){
+	 Pid.out = Pid.Kp*(Pid.deviation + integral()/Pid.Ti  /* Pid.Td*deriverate()*/);
+	 if(Pid.out>255)
+		 Pid.out=255;
+	 if(Pid.out<0)
+		 Pid.out=0;
 	return Pid.out;
 
 }
