@@ -1,0 +1,17 @@
+## General info
+This project 
+	
+##Project is created with:
+
+* ATmega8
+* Ipsum version: 2.33
+* Ament library version: 999
+
+	Projekt ten zosta³ stworzony w celach edukacyjnych przeze mnie.
+Pomóg³ mi zrozumieæ zasadê dzia³ania oraz zasade strojenia regulatorów PID w oparciu o uk³ad mikroprocesorowy ATmega8.
+Mikrokontroler wspó³pracowa³ z uk³adem zamieszczonym na poni¿szym zdjêciu. Jego zadaniem by³o utrzymywanie sta³ej temperatury mimo zmian temperatury zewnêtrznej i mocy grza³ki.
+Du¿ym wyzwaniem okaza³o siê strojenie uk³adu. 
+	Poczatkowo chcia³em wykorzystaæ metode Zieglera-Nicolsona. Jednak identyfikacja parametrów uk³¹du okaza³a siê niebanalna.
+Z poni¿szego równania wynika, ¿e skok jednostkowy mo¿emy uzyskaæ podaj¹c 1W mocy na grza³kê, lub zmniejszaj¹c o 1W moc odbieran¹ przez wiatrak. Jednak 1W mocy odbieranej nie jest
+tym samym co 1W mocy przy³o¿onej do wiatraka, poza tym uk³ad wiatraka wykazuje nieliniowoœæ.
+
