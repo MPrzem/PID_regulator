@@ -5,7 +5,16 @@ The most challenging thing was tunning of controler. I had tried to use Zigler-N
 we can make unit jump by giving 1W(in some work point-fan working) to the heater or decrease recived power form heater by 1W. But 1W of recived power is not the same as 1W of fan power.
 and also fan characteristic is not linear.
 
-##Used libraries:
+### Differential equation of heat balance
+
+![equation](./images/CodeCogsEqn.gif) 
+
+### Real system
+
+![system](./images/Circut_foto.jpg) 
+
+
+## Used libraries:
 *Peter Dannegger's onewire liblaries. I added the function wich can change resolution of sensros(It's helpful because it change  measure time.
 *Miroslaw Kardaœ liblaries for LCD HD44780 and UART(I used it when plotting the answer to the unit jump).
 
