@@ -15,8 +15,8 @@ and also fan characteristic is not linear.
 
 
 ## Used libraries:
-*Peter Dannegger's onewire liblaries. I added the function wich can change resolution of sensros(It's helpful because it change  measure time.
-*Miroslaw Kardaœ liblaries for LCD HD44780 and UART(I used it when plotting the answer to the unit jump).
+*Peter Dannegger's onewire liblaries. I added the function wich can change resolution of sensros(It's helpful because it change  measure time. \newline
+*Miroslaw Kardaœ liblaries for LCD HD44780 and UART(I used it when plotting the answer to the unit jump). \newline
 
 
 	Projekt ten zosta³ stworzony w celach edukacyjnych przeze mnie.
