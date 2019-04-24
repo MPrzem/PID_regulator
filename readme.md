@@ -8,15 +8,16 @@ and also fan characteristic is not linear.
 ### Differential equation of heat balance
 
 ![equation](./images/CodeCogsEqn.gif) 
-
+### Circuts Diagram
+![equation](./images/Circuts.png) 
 ### Real system
 
 ![system](./images/Circut_foto.jpg) 
 
 
 ## Used libraries:
-*Peter Dannegger's onewire liblaries. I added the function wich can change resolution of sensros(It's helpful because it change  measure time. \newline
-*Miroslaw Kardaœ liblaries for LCD HD44780 and UART(I used it when plotting the answer to the unit jump). \newline
+* Peter Dannegger's onewire liblaries. I added the function wich can change resolution of sensros(It's helpful because it change  measure time. 
+* Miroslaw Kardaœ liblaries for LCD HD44780 and UART(I used it when plotting the answer to the unit jump).
 
 
 	Projekt ten zosta³ stworzony w celach edukacyjnych przeze mnie.
